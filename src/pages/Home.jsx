@@ -1,6 +1,6 @@
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Header from "../components/Header";
-// import SideBar from "../components/SideBar";
+import SideBar from "../components/SideBar";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className={classes.root}>
       <Header />
-      {/* <SideBar /> */}
+      <SideBar />
     </div>
   );
 }
