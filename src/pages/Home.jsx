@@ -1,6 +1,8 @@
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import { Box } from "@material-ui/core";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
+import Main from "../components/Main";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,7 +16,10 @@ export default function Home() {
   return (
     <div className={classes.root}>
       <Header />
-      <SideBar />
+      <Box display='flex'>
+        <SideBar />
+        <Main />
+      </Box>
     </div>
   );
 }
