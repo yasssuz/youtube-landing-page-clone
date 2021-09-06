@@ -1,10 +1,13 @@
-import { AppBar, Toolbar, IconButton, Button } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Button, Switch } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AppsIcon from "@material-ui/icons/Apps";
 import VideoCallIcon from "@material-ui/icons/VideoCall";
+import { useTheme } from "@material-ui/core/styles";
+import { useContext } from "react";
+import { ThemeSwitcherContext } from "../contexts/ThemeSwitcher";
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -31,31 +34,34 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Header() {
+  const { changeTheme } = useContext(ThemeSwitcherContext);
   const classes = useStyles();
+  const theme = useTheme();
+
   return (
     <AppBar color='inherit' className={classes.appBar}>
       <Toolbar>
-        <IconButton
-          edge='start'
-          className={classes.menuIcon}
-          color='inherit'
-          aria-label='menu'
-        >
+        <IconButton edge='start' className={classes.menuIcon} aria-label='menu'>
           <MenuIcon />
         </IconButton>
         <img
-          src='/assets/preto.png'
+          src={
+            theme.palette.type === "dark"
+              ? "/assets/branco.png"
+              : "/assets/preto.png"
+          }
           alt='black logo'
           className={classes.logo}
         />
         <div className={classes.grow} />
-        <IconButton className={classes.icons} color='inherit'>
+        <Switch onChange={changeTheme} />
+        <IconButton className={classes.icons}>
           <VideoCallIcon />
         </IconButton>
-        <IconButton className={classes.icons} color='inherit'>
+        <IconButton className={classes.icons}>
           <AppsIcon />
         </IconButton>
-        <IconButton className={classes.icons} color='inherit'>
+        <IconButton className={classes.icons}>
           <MoreVertIcon />
         </IconButton>
         <Button

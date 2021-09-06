@@ -7,6 +7,7 @@ import Main from "../components/Main";
 const useStyles = makeStyles(theme => ({
   root: {
     height: "100vh",
+    background: theme.palette.background.dark,
   },
 }));
 
